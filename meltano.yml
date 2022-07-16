@@ -1,0 +1,46 @@
+version: 1
+send_anonymous_usage_stats: true
+default_environment: dev
+project_id: tap-sls
+plugins:
+  extractors:
+  - name: tap-sls
+    namespace: tap_sls
+    pip_url: -e .
+    capabilities:
+    - state
+    - catalog
+    - discover
+    select:
+      - '*.*'
+    settings:
+    - name: access_key_id
+      kind: password
+    - name: access_key
+      kind: password
+    - name: project
+    - name: logstore
+    - name: endpoint
+    - name: from_time
+    - name: to_time
+    - name: query
+    - name: primary_keys
+    config:
+      access_key_id: ''
+      access_key: ''
+      project: ''
+      logstore: ''
+      endpoint: ''
+      from_time: 1648569600
+      to_time: 1651248000
+      query: '*'
+      primary_keys:
+        - time
+  loaders:
+  - name: target-jsonl
+    variant: andyh1203
+    pip_url: target-jsonl
+environments:
+  - name: dev
+  - name: staging
+  - name: prod
