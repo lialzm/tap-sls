@@ -1,6 +1,6 @@
 version: 1
-send_anonymous_usage_stats: true
 default_environment: dev
+send_anonymous_usage_stats: true
 project_id: tap-sls
 plugins:
   extractors:
@@ -11,20 +11,27 @@ plugins:
     - state
     - catalog
     - discover
-    select:
-      - '*.*'
     settings:
     - name: access_key_id
+      env: SLS_ACCESS_KEY_ID
       kind: password
     - name: access_key
+      env: SLS_ACCESS_KEY
       kind: password
     - name: project
+      env: SLS_PROJECT
     - name: logstore
+      env: SLS_LOGSTORE
     - name: endpoint
+      env: SLS_ENDPOINT
     - name: from_time
+      env: SLS_FROM_TIME
     - name: to_time
+      env: SLS_TO_TIME
     - name: query
+      env: SLS_QUERY
     - name: primary_keys
+      env: SLS_PRIMARY_KEYS
     config:
       access_key_id: ''
       access_key: ''
@@ -35,12 +42,14 @@ plugins:
       to_time: 1651248000
       query: '*'
       primary_keys:
-        - time
+      - time
+    select:
+    - '*.*'
   loaders:
   - name: target-jsonl
     variant: andyh1203
     pip_url: target-jsonl
 environments:
-  - name: dev
-  - name: staging
-  - name: prod
+- name: dev
+- name: staging
+- name: prod
