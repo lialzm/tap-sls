@@ -136,3 +136,7 @@ dmypy.json
 .pyre/
 .meltano
 .vscode
+plugins
+output
+Dockerfile
+.dockerignore

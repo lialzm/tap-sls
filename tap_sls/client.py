@@ -87,6 +87,9 @@ class SlsStream(Stream):
             self, context: dict
     ) -> Iterable[dict]:
         state = self.get_context_state(context)
+        logger.info('========')
+        logger.info(self.tap_state)
+        logger.info('========')
         from_time = singer.get_bookmark(state, self.tap_stream_id, 'to_time')
         if not from_time:
             from_time = self.from_time

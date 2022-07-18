@@ -65,7 +65,6 @@ class LogStream(SlsStream):
             response = self.client.get_index_config(self.project, self.logstore)
             index_json = response.get_index_config().to_json()
             keys=index_json['keys']
-            logger.info(type(keys))
             for k,v in keys.items():
                 if v['type']=='long':
                     p.append(Property(k, NumberType))
