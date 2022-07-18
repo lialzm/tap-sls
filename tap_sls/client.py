@@ -91,6 +91,7 @@ class SlsStream(Stream):
         if not from_time:
             from_time = self.from_time
             logger.info('%s state no to_time'%(self.tap_stream_id))
+            logger.info('%s state is %s'%(self.tap_stream_id,state))
         else:
             logger.info('%s state get to_time %s'%(self.tap_stream_id,from_time))
         if not self.to_time:
