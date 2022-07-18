@@ -92,6 +92,7 @@ class SlsStream(Stream):
             from_time = self.from_time
         if not self.to_time:
             self.to_time = int(time.time())
+        logger.info('sls from %s , to %s'%(from_time,self.to_time))
         offset = 0
 
         log_count, is_completed, logs = self.get_logs(from_time, self.to_time, offset)
