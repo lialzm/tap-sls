@@ -90,6 +90,9 @@ class SlsStream(Stream):
         from_time = singer.get_bookmark(state, self.tap_stream_id, 'to_time')
         if not from_time:
             from_time = self.from_time
+            logger.info('%s state no to_time'%(self.tap_stream_id))
+        else:
+            logger.info('%s state get to_time %s'%(self.tap_stream_id,from_time))
         if not self.to_time:
             self.to_time = int(time.time())
         logger.info('sls from %s , to %s'%(from_time,self.to_time))
